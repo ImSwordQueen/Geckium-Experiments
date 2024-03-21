@@ -5,28 +5,28 @@
 
 :root {
   --titlebar-active: linear-gradient(
-  	to bottom,
-  	rgb(97,162,241),
-  	rgb(72,140,222) 40px
+      to bottom,
+      rgb(97, 162, 241),
+      rgb(72, 140, 222) 40px
   );
   --titlebar-inactive: linear-gradient(
-  	to bottom,
-  	rgb(163,201,247),
-  	rgb(147,186,234) 40px
+      to bottom,
+      rgb(163, 201, 247),
+      rgb(147, 186, 234) 40px
   );
   /* bruni: This is the code for the window frame when composition
   		  is disabled. This code is also used by custom themes.*/
 }
 :root[privatebrowsingmode=temporary] {
   --titlebar-active: linear-gradient(
-  	to bottom,
-  	rgb(97,122,156),
-  	rgb(80,105,141) 40px
+      to bottom,
+      rgb(97, 122, 156),
+      rgb(80, 105, 141) 40px
   ) !important;
   --titlebar-inactive: linear-gradient(
-  	to bottom,
-  	rgb(147,161,178),
-  	rgb(128,143,161) 40px
+      to bottom,
+      rgb(147, 161, 178),
+      rgb(128, 143, 161) 40px
   ) !important;
 }
 :root[privatebrowsingmode=temporary] #fxa-toolbar-menu-button {
@@ -35,9 +35,21 @@
 :root[chromemargin="0,0,0,0"][tabsintitlebar] #tabbrowser-arrowscrollbox {
   padding-top: 7px !important;
 }
+:root[chromemargin="0,0,0,0"][sizemode=maximized] body, :root[chromemargin="0,0,0,0"][sizemode=fullscreen] body {
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+:root[chromemargin="0,0,0,0"][sizemode=maximized][tabsintitlebar] #tabbrowser-arrowscrollbox, :root[chromemargin="0,0,0,0"][sizemode=fullscreen][tabsintitlebar] #tabbrowser-arrowscrollbox {
+  padding-top: 0 !important;
+}
+:root[chromemargin="0,0,0,0"][sizemode=maximized] .titlebar-buttonbox-container {
+  margin-block-start: 0 !important;
+  margin-inline-end: 3px !important;
+}
 :root[chromemargin="0,0,0,0"] body {
   background: var(--titlebar-active);
-  box-shadow: inset 0 0 1px 0 rgba(255, 255, 255, 0.5);
+  box-shadow: inset 1px 1px 0 0 rgba(255, 255, 255, 0.3);
   border-top: 1px solid rgb(89, 89, 89);
   border-left: 1px solid rgb(89, 89, 89);
   border-bottom: 1px solid rgb(68, 68, 68);
@@ -53,6 +65,11 @@
   -webkit-appearance: unset !important;
      -moz-appearance: unset !important;
           appearance: unset !important;
+}
+:root[chromemargin="0,0,0,0"] .titlebar-buttonbox-container {
+  margin: 0 !important;
+  margin-block-start: -3px !important;
+  margin-inline-end: 2px !important;
 }
 :root[chromemargin="0,0,0,0"] .titlebar-buttonbox {
   -webkit-appearance: unset !important;
@@ -73,7 +90,6 @@
     margin: 0 !important;
     height: 17px;
     box-shadow: inset 1px 1px 0px 0px rgba(255, 255, 255, 0.3);
-    margin-top: -1px !important;
     transition: background-color 100ms linear;
     background-clip: padding-box;
   }
@@ -109,10 +125,12 @@
 }
 :root[chromemargin="0,0,0,0"][sizemode=maximized] body, :root[chromemargin="0,0,0,0"][sizemode=fullscreen] body {
   padding: 0 !important;
-  padding-top: 7px !important;
 }
 :root[chromemargin="0,0,0,0"][sizemode=maximized] .titlebar-max, :root[chromemargin="0,0,0,0"][sizemode=fullscreen] .titlebar-max {
   display: none !important;
+}
+:root[chromemargin="0,0,0,0"][sizemode=maximized] body {
+  padding-top: 7px !important;
 }
 :root[chromemargin="0,0,0,0"][sizemode=normal] .titlebar-restore {
   display: none !important;
@@ -142,15 +160,15 @@
 :root:-moz-lwtheme {
   /* bruni: This entire code takes care of custom themes support for titlebar */
   /* bruni: Firefox is weird, if we set the root to be transparent,
-  		  then it takes body's background. The lowest we can go in
-  		  alpha is 0.002 for that bug (assuming it's one) to not happen. */
+  then it takes body's background. The lowest we can go in
+  alpha is 0.002 for that bug (assuming it's one) to not happen. */
   background: rgba(1, 1, 1, 0.002) !important;
 }
 :root:-moz-lwtheme:not([lwtheme-id*=firefox-compact])[style*="--lwt-additional-images"] {
   /* 	bruni: I like this theme but this theme doesn't
-  		   make use of the header image, which would
-  		   be more appropriate, so we are gonna fix
-  		   it like this for now... */
+  make use of the header image, which would
+  be more appropriate, so we are gonna fix
+  it like this for now... */
 }
 :root:-moz-lwtheme:not([lwtheme-id*=firefox-compact])[style*="--lwt-additional-images"] body {
   background: var(--lwt-additional-images), var(--lwt-accent-color) !important;
@@ -172,17 +190,23 @@
   background: var(--lwt-header-image) !important;
   background-position: top right !important;
   background-repeat: no-repeat !important;
+  box-shadow: none !important;
 }
 :root:-moz-lwtheme:not([lwtheme-id*=firefox-compact])[customthememode="2"] body,
 :root:-moz-lwtheme:not([lwtheme-id*=firefox-compact])[customthememode="2"] #navigator-toolbox {
   background: transparent !important;
 }
+@media not (-moz-ev-native-controls-patch) {
+  :root:-moz-lwtheme {
+    background: white !important;
+  }
+}
 
 #private-browsing-indicator-with-label {
   align-items: end !important;
   margin-inline: 0 !important;
-  margin-inline-start: 3px !important;
-  margin-inline-end: 1px !important;
+  margin-inline-start: 5px !important;
+  margin-inline-end: -4px !important;
 }
 
 .private-browsing-indicator-icon {
@@ -234,34 +258,32 @@
 @media not (prefers-color-scheme: dark) {
   :root:-moz-lwtheme:not([lwtheme-id*=firefox-compact]) {
     --tabbrowser-tab-selected: linear-gradient(
-                   to top,
-                   color-mix(
-                       in srgb,
-                       var(--toolbarbutton-icon-fill) 8%,
-                       white
-                   ),
-                   color-mix(
-    	in srgb,
-    	var(--toolbarbutton-icon-fill) 5%,
-    	white
-    )
-               ) !important;
-    --tabbrowser-tab-color: var(--lwt-tab-text, var(--toolbar-color, var(--lwt-text-color, white)));
+        to top,
+        color-mix(
+            in srgb,
+            var(--toolbarbutton-icon-fill) 8%,
+            white
+        ),
+        color-mix(in srgb, var(--toolbarbutton-icon-fill) 5%, white)
+    ) !important;
+    --tabbrowser-tab-color: var(
+        --lwt-tab-text,
+        var(--toolbar-color, var(--lwt-text-color, white))
+    );
   }
 }
 @media (prefers-color-scheme: dark) {
   :root:-moz-lwtheme:not([lwtheme-id*=firefox-compact]) {
     --inactive-tab-background-color: color-mix(
-                   in srgb,
-                   color-mix(
-    	in srgb,
-    	var(--lwt-accent-color) 80%,
-    	black
-    ) 80%,
-              	 	transparent
-               ) !important;
+        in srgb,
+        color-mix(in srgb, var(--lwt-accent-color) 80%, black) 80%,
+        transparent
+    ) !important;
     --tabbrowser-tab-selected: var(--lwt-accent-color) !important;
-    --tabbrowser-tab-color: var(--lwt-tab-text, var(--toolbar-color, var(--lwt-text-color, black)));
+    --tabbrowser-tab-color: var(
+        --lwt-tab-text,
+        var(--toolbar-color, var(--lwt-text-color, black))
+    );
   }
 }
 @media not (prefers-color-scheme: dark) {
@@ -270,25 +292,27 @@
   }
   :root:-moz-lwtheme:not([lwtheme-id*=firefox-compact])[customthememode="1"] .tabbrowser-tab[visuallyselected=true] {
     --tabbrowser-tab-selected: linear-gradient(
-    	to top,
-    	color-mix(
-    		in srgb,
-    		color-mix(
-    			in srgb,
-    			var(--toolbarbutton-icon-fill) 8%,
-    			white
-    		) 70%,
-    		transparent
-    	),
-    	color-mix(
-    		in srgb,
-    		color-mix(
-    			in srgb,
-    			var(--toolbarbutton-icon-fill) 5%,
-    			white
-    		) 70%,
-    		transparent
-    	)
+        to top,
+        color-mix(
+            in srgb,
+            color-mix(
+                    in srgb,
+                    var(--toolbarbutton-icon-fill) 8%,
+                    white
+                )
+                70%,
+            transparent
+        ),
+        color-mix(
+            in srgb,
+            color-mix(
+                    in srgb,
+                    var(--toolbarbutton-icon-fill) 5%,
+                    white
+                )
+                70%,
+            transparent
+        )
     ) !important;
   }
 }
@@ -300,9 +324,9 @@
   }
   :root:-moz-lwtheme:not([lwtheme-id*=firefox-compact])[customthememode="1"] .tabbrowser-tab[visuallyselected=true] {
     --tabbrowser-tab-selected: color-mix(
-    	in srgb,
-    	var(--lwt-accent-color) 70%,
-    	transparent
+        in srgb,
+        var(--lwt-accent-color) 70%,
+        transparent
     ) !important;
   }
 }
@@ -314,6 +338,9 @@
 }
 :root[sizemode=maximized] .toolbar-items {
   margin-top: -3px !important;
+}
+:root[sizemode=maximized] #private-browsing-indicator-with-label {
+  margin-top: -6px !important;
 }
 
 #TabsToolbar-customization-target {
@@ -484,6 +511,9 @@
 }
 .tabbrowser-tab:first-of-type {
   margin-left: 9px !important;
+}
+.tabbrowser-tab .tab-secondary-label {
+  display: none !important;
 }
 
 .tab-content::before, .tab-content::after {
@@ -688,6 +718,12 @@
   filter: blur(2px);
 }
 
+#private-browsing-indicator-with-label {
+  height: -moz-min-content !important;
+  height: min-content !important;
+  margin-top: auto !important;
+}
+
 :root {
   --nav-bar: linear-gradient(
       to top,
@@ -778,9 +814,21 @@
 :root:-moz-lwtheme:not([lwtheme-id*=firefox-compact])[chromemargin="0,0,0,0"][tabsintitlebar] #tabbrowser-arrowscrollbox {
   padding-top: 7px !important;
 }
+:root:-moz-lwtheme:not([lwtheme-id*=firefox-compact])[chromemargin="0,0,0,0"][sizemode=maximized] body, :root:-moz-lwtheme:not([lwtheme-id*=firefox-compact])[chromemargin="0,0,0,0"][sizemode=fullscreen] body {
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+:root:-moz-lwtheme:not([lwtheme-id*=firefox-compact])[chromemargin="0,0,0,0"][sizemode=maximized][tabsintitlebar] #tabbrowser-arrowscrollbox, :root:-moz-lwtheme:not([lwtheme-id*=firefox-compact])[chromemargin="0,0,0,0"][sizemode=fullscreen][tabsintitlebar] #tabbrowser-arrowscrollbox {
+  padding-top: 0 !important;
+}
+:root:-moz-lwtheme:not([lwtheme-id*=firefox-compact])[chromemargin="0,0,0,0"][sizemode=maximized] .titlebar-buttonbox-container {
+  margin-block-start: 0 !important;
+  margin-inline-end: 3px !important;
+}
 :root:-moz-lwtheme:not([lwtheme-id*=firefox-compact])[chromemargin="0,0,0,0"] body {
   background: var(--titlebar-active);
-  box-shadow: inset 0 0 1px 0 rgba(255, 255, 255, 0.5);
+  box-shadow: inset 1px 1px 0 0 rgba(255, 255, 255, 0.3);
   border-top: 1px solid rgb(89, 89, 89);
   border-left: 1px solid rgb(89, 89, 89);
   border-bottom: 1px solid rgb(68, 68, 68);
@@ -795,6 +843,11 @@
 :root:-moz-lwtheme:not([lwtheme-id*=firefox-compact])[chromemargin="0,0,0,0"] #titlebar {
   -moz-appearance: unset !important;
        appearance: unset !important;
+}
+:root:-moz-lwtheme:not([lwtheme-id*=firefox-compact])[chromemargin="0,0,0,0"] .titlebar-buttonbox-container {
+  margin: 0 !important;
+  margin-block-start: -3px !important;
+  margin-inline-end: 2px !important;
 }
 :root:-moz-lwtheme:not([lwtheme-id*=firefox-compact])[chromemargin="0,0,0,0"] .titlebar-buttonbox {
   -moz-appearance: unset !important;
@@ -813,7 +866,6 @@
     margin: 0 !important;
     height: 17px;
     box-shadow: inset 1px 1px 0px 0px rgba(255, 255, 255, 0.3);
-    margin-top: -1px !important;
     -moz-transition: background-color 100ms linear;
     transition: background-color 100ms linear;
     background-clip: padding-box;
@@ -851,10 +903,12 @@
 }
 :root:-moz-lwtheme:not([lwtheme-id*=firefox-compact])[chromemargin="0,0,0,0"][sizemode=maximized] body, :root:-moz-lwtheme:not([lwtheme-id*=firefox-compact])[chromemargin="0,0,0,0"][sizemode=fullscreen] body {
   padding: 0 !important;
-  padding-top: 7px !important;
 }
 :root:-moz-lwtheme:not([lwtheme-id*=firefox-compact])[chromemargin="0,0,0,0"][sizemode=maximized] .titlebar-max, :root:-moz-lwtheme:not([lwtheme-id*=firefox-compact])[chromemargin="0,0,0,0"][sizemode=fullscreen] .titlebar-max {
   display: none !important;
+}
+:root:-moz-lwtheme:not([lwtheme-id*=firefox-compact])[chromemargin="0,0,0,0"][sizemode=maximized] body {
+  padding-top: 7px !important;
 }
 :root:-moz-lwtheme:not([lwtheme-id*=firefox-compact])[chromemargin="0,0,0,0"][sizemode=normal] .titlebar-restore {
   display: none !important;
@@ -1239,7 +1293,9 @@
 :root:not([tabsintitlebar]) .toolbar-items {
   margin-top: -3px !important;
 }
-:root[sizemode=maximized] .browser-toolbar, :root[sizemode=fullscreen] .browser-toolbar {
+:root[sizemode=maximized] #nav-bar,
+:root[sizemode=maximized] #PersonalToolbar, :root[sizemode=fullscreen] #nav-bar,
+:root[sizemode=fullscreen] #PersonalToolbar {
   margin-inline: 0 !important;
   border-top-left-radius: 0 !important;
   border-top-right-radius: 0 !important;
@@ -1261,13 +1317,22 @@
   margin: 0;
   margin-top: -1px !important;
 }
+:root[sizemode=fullscreen] #fullscr-toggler {
+  display: none !important;
+}
 
 #navigator-toolbox {
   background: transparent !important;
+  box-shadow: none !important;
+  border-top: 0 !important;
   border-bottom: 0 !important;
 }
+#navigator-toolbox[fullscreenShouldAnimate] {
+  transition: none !important;
+}
 
-.browser-toolbar {
+#nav-bar,
+#PersonalToolbar {
   margin-inline: 2px;
 }
 
@@ -1551,8 +1616,8 @@ toolbar[overflowable][customizing] > .customization-target {
   border: 0 !important;
   background: transparent !important;
   padding: 0 !important;
-  margin-inline-start: 3px !important;
-  margin-inline-end: 1px !important;
+  margin-inline-start: 5px !important;
+  margin-inline-end: -4px !important;
   height: var(--tab-height);
 }
 #fxa-toolbar-menu-button .toolbarbutton-badge-stack {
@@ -1725,7 +1790,6 @@ toolbar[overflowable][customizing] > .customization-target {
 }
 
 #toolbar-menubar #menubar-items {
-  background: rgba(255, 255, 255, 0.4);
   border-radius: 4px !important;
 }
 
@@ -1734,6 +1798,15 @@ toolbar[overflowable][customizing] > .customization-target {
      -moz-appearance: menuitem !important;
           appearance: menuitem !important;
   text-shadow: 0 1px 4px rgba(255, 255, 255, 0.8);
+}
+
+#permissions-granted-icon {
+  list-style-image: url(assets/img/chrome-5/toolbar/wrench.png) !important;
+  margin-left: 2px;
+}
+
+.blocked-permission-icon {
+  display: none !important;
 }
 
 :root {
@@ -1781,7 +1854,7 @@ toolbar[overflowable][customizing] > .customization-target {
 #urlbar[focused=true]:not([supress-focus-border]) > #urlbar-background {
   outline: transparent !important;
 }
-#urlbar:not([focused=true]):not([pageproxystate=valid]) #urlbar-protocol {
+#urlbar:not([pageproxystate=valid]) #urlbar-protocol {
   display: none !important;
 }
 #urlbar:not([focused=true]) .verifiedDomain[pageproxystate=valid]::before, #urlbar:not([focused=true]) .verifiedDomain[pageproxystate=valid]::after {
@@ -1857,6 +1930,9 @@ toolbar[overflowable][customizing] > .customization-target {
 }
 #nav-bar[securestate=warning] #identity-icon, #nav-bar[securestate=insecure] #identity-icon {
   list-style-image: url(assets/img/chrome-5/toolbar/infobar_insecure.png) !important;
+}
+#nav-bar #identity-box[pageproxystate=valid].notSecure #identity-icon {
+  list-style-image: url(assets/img/chrome-5/toolbar/o2_globe.png) !important;
 }
 
 #custom-identity-label {
@@ -2155,9 +2231,9 @@ toolbarpaletteitem[place=palette] {
 }
 :root[geckium-five][geckium-six] {
   --tabbrowser-tab-selected: linear-gradient(
-  	to top,
-  	rgb(249, 249, 249),
-  	rgb(255, 255, 255)
+      to top,
+      rgb(249, 249, 249),
+      rgb(255, 255, 255)
   );
 }
 :root[geckium-five][geckium-six] {
@@ -2246,6 +2322,10 @@ toolbarpaletteitem[place=palette] {
 }
 :root[geckium-five][geckium-six] #nav-bar #custom-identity-label {
   display: none;
+}
+:root[geckium-five][geckium-six] #star-button-box > #star-button,
+:root[geckium-five][geckium-six] #star-button-box > #star-button[starred] {
+  fill: color-mix(in srgb, color-mix(in srgb, var(--toolbarbutton-icon-fill) 55%, #000) 80%, white) !important;
 }
 :root[geckium-five][geckium-six] #star-button-box {
   padding: 0 !important;
@@ -2405,6 +2485,9 @@ toolbarpaletteitem[place=palette] {
 }
 :root[geckium-five][geckium-six][geckium-eleven] #PanelUI-menu-button {
   list-style-image: url(assets/img/chrome-11/toolbar/menu_chrome.svg) !important;
+}
+:root[geckium-five][geckium-six][geckium-eleven] #nav-bar #identity-box[pageproxystate=valid].notSecure #identity-icon {
+  list-style-image: url(assets/img/chrome-11/toolbar/omnibox_http.png) !important;
 }
 
 /* Chrome 12 -> 21 */
