@@ -644,6 +644,7 @@
 
 #tabbrowser-tabs {
   margin-inline-start: 0 !important;
+  padding-inline-start: 2px !important;
   border-inline-start: 0 !important;
 }
 #tabbrowser-tabs:not([secondarytext-unsupported]) .tab-label-container {
@@ -1614,6 +1615,15 @@ toolbar[overflowable][customizing] > .customization-target {
 }
 .toolbarbutton-1:not(#fxa-toolbar-menu-button,
 #tabs-newtab-button,
+#new-tab-button) .toolbarbutton-badge {
+  margin: 0 !important;
+  margin-block-end: 1px !important;
+  align-self: end !important;
+  justify-self: center !important;
+  z-index: 1;
+}
+.toolbarbutton-1:not(#fxa-toolbar-menu-button,
+#tabs-newtab-button,
 #new-tab-button)#back-button {
   border-top-right-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
@@ -1776,11 +1786,12 @@ toolbar[overflowable][customizing] > .customization-target {
   padding: 0 !important;
   margin-inline-start: 5px !important;
   margin-inline-end: -4px !important;
+  margin-block-start: -2px !important;
   height: var(--tab-height);
 }
 #fxa-toolbar-menu-button .toolbarbutton-badge-stack {
   background: transparent !important;
-  margin-block-end: 7px;
+  margin-block-end: 11px;
 }
 #fxa-toolbar-menu-button .toolbarbutton-badge-stack > vbox,
 #fxa-toolbar-menu-button .toolbarbutton-badge-stack > vbox > #fxa-avatar-image {
@@ -2799,7 +2810,7 @@ toolbarpaletteitem[place=palette] {
   box-shadow: var(--personal-toolbar-item-shadow);
   border: 1px solid transparent;
   box-sizing: border-box;
-  transition: all 150ms linear !important;
+  transition: none !important;
 }
 :root[geckium-five][geckium-six][geckium-eleven][geckium-twentyone] .bookmark-item:hover {
   box-shadow: var(--personal-toolbar-item-hover-shadow) !important;
@@ -2807,9 +2818,11 @@ toolbarpaletteitem[place=palette] {
   border-top-color: rgb(205, 205, 204) !important;
   border-bottom-color: rgb(144, 144, 144) !important;
   color: var(--bookmark-item-hover-color) !important;
+  transition: all 150ms linear !important;
 }
 :root[geckium-five][geckium-six][geckium-eleven][geckium-twentyone] .bookmark-item:hover::before {
   opacity: 1;
+  transition: all 150ms linear !important;
 }
 :root[geckium-five][geckium-six][geckium-eleven][geckium-twentyone] .bookmark-item::before {
   content: "";
@@ -2819,7 +2832,7 @@ toolbarpaletteitem[place=palette] {
   top: 0;
   height: 1px;
   background: rgba(255, 255, 255, 0.8);
-  transition: all 150ms linear;
+  transition: none !important;
   opacity: 0;
 }
 :root[geckium-five][geckium-six][geckium-eleven][geckium-twentyone] #nav-bar[securestate=secure] #identity-icon, :root[geckium-five][geckium-six][geckium-eleven][geckium-twentyone] #nav-bar[securestate=ev] #identity-icon {
@@ -2834,6 +2847,7 @@ toolbarpaletteitem[place=palette] {
 :root[geckium-five][geckium-six][geckium-eleven][geckium-twentyone] #urlbar-background,
 :root[geckium-five][geckium-six][geckium-eleven][geckium-twentyone] #searchbar {
   outline: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: calc(var(--toolbarbutton-radius) - 1) !important;
 }
 
 /* Chrome 21 -> ~47 */
@@ -2860,6 +2874,12 @@ toolbarpaletteitem[place=palette] {
 :root[geckium-five][geckium-six][geckium-eleven][geckium-twentyone][geckium-fortyseven] #TabsToolbar #new-tab-button::before {
   -webkit-mask-image: url(assets/img/chrome-47/tabbar/newtab_button_mask.png) !important;
           mask-image: url(assets/img/chrome-47/tabbar/newtab_button_mask.png) !important;
+}
+:root[geckium-five][geckium-six][geckium-eleven][geckium-twentyone][geckium-fortyseven] .bookmark-item {
+  transition: all 150ms linear !important;
+}
+:root[geckium-five][geckium-six][geckium-eleven][geckium-twentyone][geckium-fortyseven] .bookmark-item::before {
+  transition: all 150ms linear !important;
 }
 :root[geckium-five][geckium-six][geckium-eleven][geckium-twentyone][geckium-fortyseven] {
   --tab-width: 188px;

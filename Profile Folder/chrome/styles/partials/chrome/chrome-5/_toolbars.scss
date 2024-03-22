@@ -748,6 +748,14 @@ toolbar[overflowable][customizing] > .customization-target {
         justify-content: center;
     }
 
+	.toolbarbutton-badge {
+		margin: 0 !important;
+		margin-block-end: 1px !important;
+		align-self: end !important;
+		justify-self: center !important;
+		z-index: 1;
+	}
+
     /* bruni: Navigation buttons needs some rethinking. */
     &#back-button {
         border-top-right-radius: 0 !important;
@@ -850,11 +858,12 @@ toolbar[overflowable][customizing] > .customization-target {
     padding: 0 !important;
     margin-inline-start: 5px !important;
     margin-inline-end: -4px !important;
+	margin-block-start: -2px !important;
     height: var(--tab-height);
 
     .toolbarbutton-badge-stack {
         background: transparent !important;
-        margin-block-end: 7px;
+        margin-block-end: 11px;
     }
 
     .toolbarbutton-badge-stack > vbox,
