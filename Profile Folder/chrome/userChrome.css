@@ -404,7 +404,7 @@
   min-width: 0 !important;
   color: var(--tabbrowser-tab-color) !important;
   /* bruni: We are changing the favicon of about pages like
-  		  this so we can have era-specific icons. */
+   this so we can have era-specific icons. */
   /* bruni: This controls the tab "open"/"close" transition. */
   /* bruni: This makes it so the tab does not disappear when it starts "close" transition 
    and it also makes the tab disappear when the background reaches min-width just
@@ -521,8 +521,8 @@
   border-right: 0 !important;
   padding-right: 3px !important;
 }
-.tabbrowser-tab:first-child {
-  margin-left: 11px !important;
+.tabbrowser-tab:first-of-type {
+  margin-left: 9px !important;
 }
 .tabbrowser-tab .tab-secondary-label {
   display: none !important;
@@ -643,6 +643,7 @@
 }
 
 #tabbrowser-tabs {
+  margin-inline-start: 0 !important;
   border-inline-start: 0 !important;
 }
 #tabbrowser-tabs:not([secondarytext-unsupported]) .tab-label-container {
@@ -2136,12 +2137,22 @@ toolbar[overflowable][customizing] > .customization-target {
   list-style-image: url("assets/img/toolbar/grayfolder.png") !important;
 }
 
-#urlbar-background {
+#urlbar-background,
+#searchbar {
   border-inline: 0 !important;
   border-block: 1px solid var(--urlbar-border) !important;
   box-shadow: none !important;
   border-radius: 0 !important;
   height: var(--urlbar-height-definitive);
+}
+
+.searchbar-search-button {
+  justify-content: center !important;
+  margin-inline-end: 3px !important;
+}
+
+.searchbar-search-icon {
+  margin: 0 !important;
 }
 
 #identity-box-button,
@@ -2207,10 +2218,14 @@ toolbar[overflowable][customizing] > .customization-target {
   text-align: end;
 }
 
-#urlbar-container {
-  --urlbar-container-height: var(--urlbar-height-definitive) !important;
+#urlbar-container,
+#search-container {
   padding: 0 !important;
   margin-inline: 2px !important;
+}
+
+#urlbar-container {
+  --urlbar-container-height: var(--urlbar-height-definitive) !important;
 }
 #urlbar-container:not([starpos=start]) #go-button-box {
   display: none;
@@ -2219,7 +2234,9 @@ toolbar[overflowable][customizing] > .customization-target {
   display: none !important;
 }
 
-#urlbar-input-container {
+#urlbar-input-container,
+#searchbar {
+  min-height: var(--urlbar-height-definitive) !important;
   height: var(--urlbar-height-definitive) !important;
   padding: 0 !important;
   padding-inline-start: 4px !important;
@@ -2447,9 +2464,10 @@ toolbarpaletteitem[place=palette] {
 :root[geckium-five][geckium-six] #urlbar-container {
   margin-inline: 4px !important;
 }
-:root[geckium-five][geckium-six] #urlbar-background {
+:root[geckium-five][geckium-six] #urlbar-background,
+:root[geckium-five][geckium-six] #searchbar {
   background-color: var(--toolbar-field-background-color) !important;
-  border-inline: 1px solid var(--urlbar-border) !important;
+  border: 1px solid var(--urlbar-border) !important;
   border-radius: var(--toolbarbutton-radius) !important;
 }
 :root[geckium-five][geckium-six] .urlbar-input-box {
@@ -2813,7 +2831,8 @@ toolbarpaletteitem[place=palette] {
 :root[geckium-five][geckium-six][geckium-eleven][geckium-twentyone] #nav-bar[securestate=insecure] #identity-icon {
   list-style-image: url(assets/img/chrome-21/toolbar/omnibox_https_invalid.png) !important;
 }
-:root[geckium-five][geckium-six][geckium-eleven][geckium-twentyone] #urlbar-background {
+:root[geckium-five][geckium-six][geckium-eleven][geckium-twentyone] #urlbar-background,
+:root[geckium-five][geckium-six][geckium-eleven][geckium-twentyone] #searchbar {
   outline: 1px solid rgba(255, 255, 255, 0.3);
 }
 
@@ -2844,9 +2863,6 @@ toolbarpaletteitem[place=palette] {
 }
 :root[geckium-five][geckium-six][geckium-eleven][geckium-twentyone][geckium-fortyseven] {
   --tab-width: 188px;
-}
-:root[geckium-five][geckium-six][geckium-eleven][geckium-twentyone][geckium-fortyseven] .tabbrowser-tab:first-child {
-  margin-left: 7px !important;
 }
 :root[geckium-five][geckium-six][geckium-eleven][geckium-twentyone][geckium-fortyseven] .tab-content {
   padding-right: 1px !important;

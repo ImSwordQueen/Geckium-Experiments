@@ -1,15 +1,9 @@
 & {
-	--tab-width: 188px;
-}
-
-.tabbrowser-tab {
-	&:first-child {
-        margin-left: 7px !important;
-    }
+    --tab-width: 188px;
 }
 
 .tab-content {
-	padding-right: 1px !important;
+    padding-right: 1px !important;
 }
 
 .tab-close-button {
