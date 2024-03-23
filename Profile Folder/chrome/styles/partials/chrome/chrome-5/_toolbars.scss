@@ -544,8 +544,9 @@
     }
 }
 
-#nav-bar-customization-target {
-    align-items: center;
+#nav-bar-customization-target,
+#PanelUI-button {
+    margin-top: -1px;
 }
 
 .close-icon:hover {
@@ -748,6 +749,14 @@ toolbar[overflowable][customizing] > .customization-target {
         justify-content: center;
     }
 
+	.toolbarbutton-badge {
+		margin: 0 !important;
+		margin-block-end: 1px !important;
+		align-self: end !important;
+		justify-self: center !important;
+		z-index: 1;
+	}
+
     /* bruni: Navigation buttons needs some rethinking. */
     &#back-button {
         border-top-right-radius: 0 !important;
@@ -850,11 +859,12 @@ toolbar[overflowable][customizing] > .customization-target {
     padding: 0 !important;
     margin-inline-start: 5px !important;
     margin-inline-end: -4px !important;
+	margin-block-start: -2px !important;
     height: var(--tab-height);
 
     .toolbarbutton-badge-stack {
         background: transparent !important;
-        margin-block-end: 7px;
+        margin-block-end: 11px;
     }
 
     .toolbarbutton-badge-stack > vbox,
@@ -909,6 +919,10 @@ toolbar[overflowable][customizing] > .customization-target {
     padding: 0 !important;
     min-height: 19px !important;
     min-width: 19px !important;
+}
+
+#identity-permission-box {
+    display: none !important;
 }
 
 .identity-box-button,

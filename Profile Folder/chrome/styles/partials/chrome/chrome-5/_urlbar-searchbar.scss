@@ -431,6 +431,14 @@
             fill-opacity: 1;
         }
     }
+
+	&[label] {
+		margin: 0 !important;
+
+		&::before {
+			content: unset !important;
+		}
+	}
 }
 
 .urlbarView-action {
@@ -536,4 +544,8 @@
 
 .urlbarView-dynamic-onboardTabToSearch-action {
     display: none;
+}
+
+.urlbarView-action {
+	display: none !important;
 }
