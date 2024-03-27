@@ -1,4 +1,8 @@
 menupopup {
+	button {
+		min-width: 0 !important;
+	}
+	
 	> menu,
 	> menuitem {
 		.menu-text {
@@ -8,5 +12,10 @@ menupopup {
 		.menu-accel-container {
 			justify-content: end !important;
 		}
+	}
+
+	> .menuitemitems,
+	> .menuitemitems + menuseparator {
+		display: none !important;
 	}
 }
