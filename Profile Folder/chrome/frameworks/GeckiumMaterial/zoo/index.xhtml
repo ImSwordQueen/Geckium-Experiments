@@ -15,7 +15,16 @@
 		<hbox id="window" class="accent-color" style="--primary-color: rgb(55,103,212)">
 			<vbox id="navigation-drawer" class="iconic">
 				<vbox class="window-top-bars">
-					<hbox class="window-titlebar"></hbox>
+					<hbox class="window-titlebar">
+						<hbox id="window-caption-buttons-container" class="show-mac">
+							<hbox id="window-caption-buttons">
+								<button class="caption-button close" id="window-close-button" onclick="window.close();" />
+								<button class="caption-button minimize" id="window-minimise-button" onclick="window.minimize();" />
+								<button class="caption-button maximize" id="window-maximize-button" onclick="window.maximize();" />
+								<button class="caption-button restore" id="window-restore-button" onclick="window.restore();" />
+							</hbox>
+						</hbox>
+					</hbox>
 					<vbox class="window-top-bar">
 						<hbox class="window-toolbar">
 							<h3 id="window-title"/>
@@ -42,10 +51,12 @@
 			<vbox id="window-content-container">
 				<vbox class="window-top-bars light">
 					<hbox class="window-titlebar">
-						<hbox id="window-caption-buttons-container">
+						<hbox id="window-caption-buttons-container" class="hide-mac">
 							<hbox id="window-caption-buttons">
-								<button id="window-minimise-button" onclick="window.minimize();" />
-								<button id="window-close-button" onclick="window.close();" />
+								<button class="caption-button minimize" id="window-minimise-button" onclick="window.minimize();" />
+								<button class="caption-button maximize" id="window-maximize-button" onclick="window.maximize();" />
+								<button class="caption-button restore" id="window-restore-button" onclick="window.restore();" />
+								<button class="caption-button close" id="window-close-button" onclick="window.close();" />
 							</hbox>
 						</hbox>
 					</hbox>
