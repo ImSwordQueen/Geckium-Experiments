@@ -136,6 +136,12 @@
 			margin-top: -3px !important;
 		}
 
+		.tabbrowser-tab {
+			&:first-of-type {
+				margin-left: 6px !important;
+			}
+		}
+
 		#private-browsing-indicator-with-label {
 			margin-top: -6px !important;
 		}
@@ -215,7 +221,14 @@
 		&[image="chrome://mozapps/skin/extensions/extension.svg"]
 		{
 			.tab-icon-image {
-				display: none !important;
+				display: none;
+			}
+		}
+
+		&[image="chrome://branding/content/icon32.png"]
+		{
+			.tab-icon-stack {
+				display: none;
 			}
 		}
 
