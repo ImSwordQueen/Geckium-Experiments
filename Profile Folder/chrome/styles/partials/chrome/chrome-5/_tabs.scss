@@ -205,6 +205,7 @@
 	margin-left: -13px !important;
 	padding: 0;
 	overflow: hidden !important;
+	z-index: 1;
 }
 
 .tabbrowser-tab {
@@ -218,17 +219,18 @@
 			  this so we can have era-specific icons. */
 	&:not([busy]) {
 		&[image="chrome://global/skin/icons/settings.svg"],
-		&[image="chrome://mozapps/skin/extensions/extension.svg"]
+		&[image="chrome://mozapps/skin/extensions/extension.svg"],
+		&[image="chrome://branding/content/icon32.png"]
 		{
-			.tab-icon-image {
+			.tab-icon-stack {
 				display: none;
 			}
 		}
 
 		&[image="chrome://branding/content/icon32.png"]
 		{
-			.tab-icon-stack {
-				display: none;
+			.tab-label-container {
+				padding-left: 4px;
 			}
 		}
 
@@ -251,6 +253,8 @@
 	}
 
 	&:not([visuallyselected="true"]) {
+		z-index: 500 !important;
+
 		&:not(:first-of-type) {
 			.tab-content {
 				&::before {
@@ -305,12 +309,10 @@
 				background-color: var(
 					--inactive-tab-background-color
 				) !important;
-				//transition: 100ms background-color linear;
 			}
 
 			&::before {
 				mask-image: url(assets/img/chrome-5/tabbar/tab_alpha_left.png);
-				//backdrop-filter: blur(400px);
 				left: calc(var(--tab-sides-width) * -1);
 			}
 
@@ -338,7 +340,6 @@
 
 		.tab-background {
 			background: var(--inactive-tab-background-color) !important;
-			//transition: 100ms background-color linear;
 		}
 	}
 
@@ -416,7 +417,8 @@
 		padding: 0 !important;
 		border-left: calc(var(--tab-sides-width) - 2px) solid transparent !important;
 		border-right: 0 !important;
-		padding-right: 3px !important;
+		padding-inline-start: 1px !important;
+		padding-inline-end: 2px !important;
 	}
 
 	&:first-of-type {
@@ -476,6 +478,7 @@
 .tab-stack {
 	margin-inline-start: calc(var(--tab-distance) + 1px) !important;
 	margin-inline-end: var(--tab-distance) !important;
+	z-index: 1;
 
 	&::before,
 	&::after {
@@ -620,8 +623,7 @@
 
 .tab-glare-right {
 	mask-image: url(assets/img/chrome-5/tabbar/tab_alpha_right.png);
-
-	/* bruni: Why are the masks different in size???  */
+	mask-position-x: -2px;
 	mask-position-y: -3px;
 	width: var(--tab-sides-width);
 }
@@ -653,7 +655,7 @@
 	width: 12px !important;
 	padding: 0 !important;
 	margin-inline-end: -2px !important;
-	margin-top: 2px;
+	margin-top: 4px;
 	background-image: url(assets/img/chrome-5/tabbar/tab_close_mask.png);
 
 	&:hover {
@@ -668,4 +670,17 @@
 #private-browsing-indicator-with-label {
 	height: min-content !important;
 	margin-top: auto !important;
+}
+
+.tab-throbber,
+.tab-icon-pending,
+.tab-icon-image,
+.tab-sharing-icon-overlay,
+.tab-icon-overlay {
+	margin: 0 !important;
+	padding: 0 !important;
+}
+.tab-icon-stack {
+	margin-top: 4px;
+	margin-inline-end: 4px !important;
 }

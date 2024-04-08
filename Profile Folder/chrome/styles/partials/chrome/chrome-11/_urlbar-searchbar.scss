@@ -8,4 +8,14 @@
 	#urlbar-background {
 		box-shadow: 0 1px 0 0 rgb(255, 255, 255, 20%) !important;
 	}
+
+	#urlbar-container {
+		margin-inline: 3px !important;
+	}
+
+	#urlbar-input {
+		&::placeholder {
+			color: transparent !important;
+		}
+	}
 }

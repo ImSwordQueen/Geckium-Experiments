@@ -2,6 +2,9 @@
 	--urlbar-height-definitive: 25px !important;
 
 	#nav-bar {
+		padding-inline-start: 5px !important;
+		padding-inline-end: 4px !important;
+
 		&[securestate="secure"],
 		&[securestate="ev"] {
 			#identity-icon {
@@ -26,6 +29,22 @@
 	#searchbar {
 		outline: 1px solid rgba(255, 255, 255, 0.3);
 		border-radius: calc(var(--toolbarbutton-radius) - 1px) !important;
+		border-top-color: rgb(164, 164, 163) !important;
+	}
+	#chrome-button {
+		margin-inline: 0px !important;
+	}
+}
+
+#urlbar {
+	&:not(.searchButton) {
+		> #urlbar-input-container {
+			> #identity-box[pageproxystate="invalid"] {
+				#identity-icon {
+					list-style-image: url("assets/img/chrome-21/toolbar/search.png") !important;
+				}
+			}
+		}
 	}
 }
 
