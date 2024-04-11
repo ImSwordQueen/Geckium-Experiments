@@ -10,7 +10,7 @@ window {
 
 window {
 	display: flex;
-		
+
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
@@ -49,11 +49,11 @@ window {
 			transition: none !important;
 			background-size: 100%;
 			background-repeat: no-repeat;
-	
+
 			&:hover {
 				background-color: transparent !important;
 			}
-	
+
 			&.close {
 				background: url("chrome://userchrome/content/frameworks/GeckiumMaterial/icons/mac/close.svg");
 				&:active {
@@ -116,7 +116,7 @@ window {
 	width: 100%;
 	z-index: 2;
 	height: var(--titlebar-height);
-	background: rgb(0,0,0,.1);
+	background: rgb(0, 0, 0, 0.1);
 	justify-content: end;
 	-moz-window-dragging: drag;
 
@@ -126,17 +126,6 @@ window {
 
 	.caption-button {
 		-moz-window-dragging: no-drag;
-
-		&.close, &.minimize {
-			&::before, &::after {
-				background: var(--caption-button-color) !important;
-			}
-		}
-		&.maximize, &.restore {
-			&::before, &::after {
-				border-color: var(--caption-button-color) !important;
-			}
-		}
 	}
 }
 
@@ -164,7 +153,29 @@ window {
 				position: absolute;
 			}
 		}
-		
+
+		&.close {
+			&::before {
+				mask-image: url("chrome://userchrome/content/frameworks/GeckiumMaterial/icons/close.svg");
+				mask-position: center center;
+				mask-size: 14px 14px;
+				mask-repeat: no-repeat;
+				height: 32px;
+				width: 32px;
+				background: white;
+			}
+		}
+		&.minimize {
+			&::before {
+				mask-image: url("chrome://userchrome/content/frameworks/GeckiumMaterial/icons/minimize.svg");
+				mask-position: center 14px;
+				mask-size: 14px 14px;
+				mask-repeat: no-repeat;
+				height: 32px;
+				width: 32px;
+				background: white;
+			}
+		}
 	}
 }
 
@@ -174,7 +185,7 @@ window {
 	background: var(--primary-color);
 	font-weight: 500;
 	font-size: 13pt;
-	padding-inline-start: 22px;
+	padding-inline: 22px;
 	box-shadow: var(--elevation-4);
 	-moz-window-dragging: drag;
 
@@ -184,17 +195,28 @@ window {
 		width: 56px;
 		height: 56px;
 	}
+
+	.switch-parent {
+		.switch {
+			&:not([disabled="true"]):checked {
+				background: color-mix(
+					in srgb,
+					white,
+					transparent 80%
+				);
+			}
+		}
+	}
 }
 
 .window-toolbar {
 	align-items: center;
+	flex: 1;
 }
 
 #navigation-drawer {
 	.window-titlebar {
 		--caption-button-color: rgb(102, 102, 102) !important;
-
-		
 	}
 
 	.window-top-bar {
@@ -208,6 +230,10 @@ window {
 
 	flex: 1;
 	z-index: 1;
+
+	> .window-top-bars {
+		z-index: 2;
+	}
 }
 
 #window-container {
@@ -217,7 +243,7 @@ window {
 #window-content {
 	overflow: hidden;
 	flex: 1;
-	background: #FAFAFA;
+	background: #fafafa;
 
 	@media (prefers-color-scheme: dark) {
 		background: #212121;
